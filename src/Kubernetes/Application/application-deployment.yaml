@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application-deployment
+  labels:
+    skillshare: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      skillshare: application
+  template:
+    metadata:
+      name: application
+      labels:
+        skillshare: application
+    spec:
+      containers:
+      - name: application
+        image: rafael097/infnet-devops-application:1.2
+        livenessProbe:
+          httpGet:
+            path: /livenessProbe/isAlive
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 60
+        env:
+        - name: DATABASE_URL
+          value: "10.107.232.29"

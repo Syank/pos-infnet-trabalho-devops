@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: application-nodeport
+spec:
+  type: NodePort
+  selector:
+    skillshare: application
+  ports:
+  - protocol: TCP
+    nodePort: 30100
+    port: 8080
+

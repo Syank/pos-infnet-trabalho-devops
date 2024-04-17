@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: application
+  labels:
+    skillshare: application
+spec:
+  containers:
+  - name: application
+    image: rafael097/infnet-devops-application:1.2
+    env:
+    - name: DATABASE_URL
+      value: "10.107.232.29"

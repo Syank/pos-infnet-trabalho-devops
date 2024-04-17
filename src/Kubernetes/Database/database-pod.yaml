@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: database
+  labels:
+    skillshare: database
+spec:
+  volumes:
+  - name: database-volume
+    persistentVolumeClaim:
+      claimName: database-pvc
+  containers:
+  - name: database
+    image: rafael097/infnet-devops-database:1.0
+    volumeMounts:
+    - name: database-volume
+      mountPath: /data/postgres

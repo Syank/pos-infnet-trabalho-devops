@@ -9,6 +9,9 @@ spec:
   - name: prometheus-config-volume
     configMap:
       name: prometheus-config
+  - name: prometheus-volume
+    persistentVolumeClaim:
+      claimName: prometheus-storage
   containers:
   - name: prometheus
     image: prom/prometheus
@@ -17,3 +20,6 @@ spec:
     volumeMounts:
     - name: prometheus-config-volume
       mountPath: /etc/prometheus/
+    volumeMounts:
+    - name: prometheus-volume
+      mountPath: /data/prometheus/

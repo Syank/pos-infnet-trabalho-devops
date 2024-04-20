@@ -5,7 +5,7 @@ metadata:
   labels:
     skillshare: application
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       skillshare: application
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: application
-        image: rafael097/infnet-devops-application:1.2
+        image: rafael097/infnet-devops-application:latest
         livenessProbe:
           httpGet:
             path: /livenessProbe/isAlive
@@ -26,4 +26,4 @@ spec:
           periodSeconds: 60
         env:
         - name: DATABASE_URL
-          value: "10.107.232.29"
+          value: "10.109.203.66"
